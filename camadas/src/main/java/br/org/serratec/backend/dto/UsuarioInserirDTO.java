@@ -42,4 +42,5 @@ public class UsuarioInserirDTO {
 		this.senha = senha;
 	}
 	
+	
 }

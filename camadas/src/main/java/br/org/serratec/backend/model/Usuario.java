@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario {
@@ -16,6 +18,11 @@ public class Usuario {
 	private String email;
 	private String perfil;
 	private String senha;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_endereco")
+	private Endereco endereco;
+	
 	public Usuario() {
 		super();
 	}
@@ -26,6 +33,14 @@ public class Usuario {
 		this.email = email;
 		this.perfil = perfil;
 		this.senha = senha;
+	}
+	
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	public Long getId() {
 		return id;
@@ -79,6 +94,10 @@ public class Usuario {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Nome: " + nome + "\nEmail: " + email + "\nPerfil: " + perfil;
 	}
 	
 	
